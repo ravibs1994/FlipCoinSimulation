@@ -1,10 +1,9 @@
 #!/bin/bash -x
 head=1
 tail=0
-i=1
 hCount=0
 tCount=0
-while [ $i -le 10 ]
+while [[ $hCount -lt 21 && $tCount -lt 21 ]]
 	do
 		result=$(($RANDOM%2))
 			if [ $result -eq $head ]
@@ -13,8 +12,13 @@ while [ $i -le 10 ]
 				else
 					((tCount++))
 			fi
-		((i++))
 done
-echo $hCount "Number of Times Head Win"
-echo $tCount "Number of Times Tail Win"
-
+if [ $hCount -eq $tCount ]
+	then
+			echo "Tie"
+	elif [ $hCount -gt $tCount ]
+		then
+			echo "Head Wins "$hCount
+		else
+			echo "Tail Wins "$tCount
+fi
