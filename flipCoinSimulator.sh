@@ -1,10 +1,20 @@
 #!/bin/bash -x
 head=1
 tail=0
-result=$(($RANDOM%2))
-if [ $result -eq $head ]
-	then
-		echo " Head Win "
-	else
-		echo " Tail Win "
-fi
+i=1
+hCount=0
+tCount=0
+while [ $i -le 10 ]
+	do
+		result=$(($RANDOM%2))
+			if [ $result -eq $head ]
+				then
+					((hCount++))
+				else
+					((tCount++))
+			fi
+		((i++))
+done
+echo $hCount "Number of Times Head Win"
+echo $tCount "Number of Times Tail Win"
+
